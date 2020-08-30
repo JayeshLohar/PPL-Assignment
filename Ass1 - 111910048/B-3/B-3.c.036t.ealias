@@ -1,0 +1,108 @@
+
+;; Function main (main, funcdef_no=13, decl_uid=3219, cgraph_uid=13, symbol_order=13)
+
+Points-to analysis
+
+Constraints:
+
+ANYTHING = &ANYTHING
+ESCAPED = *ESCAPED
+ESCAPED = ESCAPED + UNKNOWN
+*ESCAPED = NONLOCAL
+NONLOCAL = &NONLOCAL
+NONLOCAL = &ESCAPED
+INTEGER = &ANYTHING
+b_6 = b_3
+b_6 = &NONLOCAL
+b_7 = b_3
+b_7 = &NONLOCAL
+b_2 = b_6
+b_2 = b_7
+a_8 = a_1
+a_8 = &NONLOCAL
+a_1 = &NONLOCAL
+a_1 = a_8
+b_3 = b_5
+b_3 = b_2
+ESCAPED = &STRING
+ESCAPED = a_1
+ESCAPED = b_3
+ESCAPED = &NULL
+
+Collapsing static cycles and doing variable substitution
+Building predecessor graph
+Detecting pointer and location equivalences
+Rewriting constraints and unifying variables
+Uniting pointer but not location equivalent variables
+Finding indirect cycles
+Solving graph
+
+Points-to sets
+
+ANYTHING = { ANYTHING }
+ESCAPED = { NULL STRING ESCAPED NONLOCAL }
+NONLOCAL = { ESCAPED NONLOCAL }
+STOREDANYTHING = { }
+INTEGER = { ANYTHING }
+printf = { }
+b_6 = { NONLOCAL }
+b_3 = { NONLOCAL } same as b_6
+b_7 = { NONLOCAL } same as b_6
+b_2 = { NONLOCAL } same as b_6
+a_8 = { NONLOCAL } same as b_6
+a_1 = { NONLOCAL } same as b_6
+b_5 = { }
+
+
+Alias information for main
+
+Aliased symbols
+
+
+Call clobber information
+
+ESCAPED, points-to non-local, points-to NULL, points-to vars: { }
+
+Flow-insensitive points-to information
+
+
+main ()
+{
+  int b;
+  int a;
+
+  <bb 2> :
+  goto <bb 7>; [INV]
+
+  <bb 3> :
+  if (a_1 <= 3)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  b_6 = b_3 + 2;
+  goto <bb 6>; [INV]
+
+  <bb 5> :
+  b_7 = b_3 * 2;
+
+  <bb 6> :
+  # b_2 = PHI <b_6(4), b_7(5)>
+  a_8 = a_1 + 1;
+
+  <bb 7> :
+  # a_1 = PHI <4(2), a_8(6)>
+  # b_3 = PHI <b_5(D)(2), b_2(6)>
+  if (a_1 <= 99)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 8>; [INV]
+
+  <bb 8> :
+  printf ("%d%d", a_1, b_3);
+  return 0;
+
+}
+
+

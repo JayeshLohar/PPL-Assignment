@@ -1,0 +1,11 @@
+B-2. Loop Unrolling
+ 
+Questions
+
+Q1.  What will happen if "a = a + N" is replaced by "a = a + 1"?
+Ans :
+     If "a = a + N" is replaced by "a = a + 1", then loop unrolling doesn't take place. Directly the value of a
+     i.e 14 is returned. The compiler will be able to evaluate the final value a and turn the function into the
+     equivalent of "return 14".
+     This is also true for local variables. If in place of N a local variable is written then loop unrolling 
+     won't take place. Direct the value will be returned.

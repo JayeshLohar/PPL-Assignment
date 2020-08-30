@@ -1,0 +1,5 @@
+Q.  Try to figure  out how GCC handles the  ternary operator [a ? b  : c] in GIMPLE.
+Ans :
+    In Gimple if we use ternary operator in source code, compiler converts it into repective if/else blocks
+    and evaluate it as per given conditions. At the end the control will reach the common basic block i.e,
+    to <bb5> where the assignment of max will take place. The value will be stored in iftmp.0 .

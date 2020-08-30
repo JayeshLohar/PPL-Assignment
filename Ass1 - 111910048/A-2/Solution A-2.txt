@@ -1,0 +1,22 @@
+A-2. Conditional Jumps and Control Flow Graphs 
+
+Questions
+
+Q1.  How have if-blocks  been translated into GIMPLE  statements? Can you differentiate between conditional 
+     and unconditional gotos?
+Ans :
+  i. If/else blocks are translated into goto statements and as per their conditions these goto blocks executed.
+     Some temporary lables are given as <D.1975>. Depending upon condition i.e, True/False the control goes
+     to respective lable due to goto statements and respectiveblock will be executed.
+ ii. The conditional gotos are defined as, if goto statement mentioned inside a if/else block then it will 
+     be evaluatedas per the condition of if/else block are known as conditional gotos.  
+iii. The goto statement which doesn't depend upon any condition and which always executed is known as 
+     unconditionalgotos. 
+
+Q2.  Repeat  the  above compilation,  but  now  asking for  another  dump that  of  the pass  "cfg". View this
+     pass and say  whether  this representation makes it easier to  read and understand GIMPLEs. Draw the 
+     control-flow graph  of the program A-2.c on a  piece of paper by looking at the CFG dump.
+Ans :
+  i. It's easy to read and understand the control flow in this representation i.e, in this dump it's bit
+     easier to see the control flow in this representation. But in this dump more number of lines are used
+     i.e, slightly less conise in terms of number of lines used.  

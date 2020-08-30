@@ -1,0 +1,43 @@
+A-1. Declaration, Expression and Assignments
+
+Questions
+
+Q1.  How do the declarations look in the GIMPLE? Specifically, what happens to multiple  variables declared
+     and initialized on the sameline? What happens to global declaration [int Z]?
+Ans :  
+  i. In Gimple, variables are declared on seprate new lines one after other, and then assignment of the values
+     to declared variables is done.
+ ii. Multiple variables which are declared and initialized on the same line in the sorce code are also
+     declared on seprate new lines in the Gimple.
+iii. Global variables are not declared in the Gimple, but for using global variable inside an operation, the
+     value of global variable is assigned to a temporary variable.
+
+Q2.  How are complex  expressions such as [c  = a * b +  25] broken down? Can you determine a rule as to when
+     temporary variables will be introduced?
+Ans :
+  i. In case of comlex expression, (a*b) is first evaluated and stored in temporary variable "-1". Then _1 is
+     added to 25 to get c.
+ ii. Whenever we have complex expression consisting of many operators, then the complex expression is broken 
+     down into constituent simpler expressions. Each simple expression is evaluated and it's result is stored
+     into temporary variables. These expression are evaluated as per the priority in maths.
+
+Q3.  How are floats/doubles represented in GIMPLE? What happens when a float/double is assigned to an integer
+     in [Z = r]?
+  i. In Gimple, floats/doubles are represented using scientific notation. Floats/doubles are represented as
+     only single digit before decimal point multiplied by power of 10. As 34.5 is represented as 3.45e+1 which 
+     means 3.45*(10*1).
+ ii. When float/double is assigned to an integer then first that float/double is converted to integer i.e, 
+     type-casted to integer and stored in temporary variable (_2). Only the integer part is assigned i.e, 
+     only part before decimal point. After that this temporary variable is assigned to integer variable.
+
+Q4.  How  are reads/writes to the  global variable  Z performed?  Why is there a temporary introduced  for 
+     the statement [Z = Z  + 1] but not for the statements [q = Z] or [Z = p]?
+Ans :
+  i. In Gimple Read/Writes to the global variable Z performed through loads to/stores from locals i.e,
+ ii. A temporary variable is introduced for the statement [Z = Z + 1] because the result of computation Z + 1
+     be written directly to a memory location. For the statement [Z = Z + 1], the global variable Z is 
+     directly used, so for this a temporary variable is used and further operation is carried out using 
+     temporary variable. Finally result is assigned to global variable.
+iii. When value of global variable is being assigned to local variable i.e, (q = Z) and also for local
+     variable p to be assigned to global variable Z, this is done directly without any temporary variable
+     as variable p and q are declar already.

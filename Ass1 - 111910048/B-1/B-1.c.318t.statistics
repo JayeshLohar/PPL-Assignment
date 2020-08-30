@@ -1,0 +1,14 @@
+25 ssa "unused VAR_DECLs removed" "main" 1
+37 ccp "Copies propagated" "AddTwo" 1
+37 ccp "Statements deleted" "AddTwo" 1
+54 release_ssa "SSA names released" "AddTwo" 1
+54 release_ssa "SSA name holes removed" "AddTwo" 1
+37 ccp "Statements deleted" "main" 5
+37 ccp "Constants propagated" "main" 1
+54 release_ssa "unused VAR_DECLs removed" "main" 3
+54 release_ssa "SSA names released" "main" 5
+54 release_ssa "SSA name holes removed" "main" 5
+139 pre "compute_antic iterations == 2" "AddTwo" 1
+139 pre "insert iterations == 1" "AddTwo" 1
+139 pre "compute_antic iterations == 2" "main" 1
+139 pre "insert iterations == 1" "main" 1

@@ -1,0 +1,22 @@
+A-4. Arrays and Pointers
+
+Questions :
+
+Q1.  How is array declaration and initialization handled?
+Ans :
+  i. Declaration of array takes place in single statement with no initialization. Arrays are declared in a new
+     line with array length.
+ ii. The each elements in array are declared in seprate new line. Here elements of array b are declared in 
+     block <bb2>.
+
+Q2.  Why does the statement a[i] = b[i] get broken down to two steps with an intermediate temporary?
+Ans :
+     In Gimple only one operation is performed at a time i.e, only one memory operation per instruction is 
+     permitted. This probably simplifies many things. So here a[i] and b[i] are first assigned to a temporary
+     and then temporary variables used for further operation.
+
+Q3.  Why are there CLOBBER statements at the end?
+Ans :
+     To mark the arrays as invalid  at scope exit - probably to simplify analysis and permit reuse of stack 
+     slots, etc. Clobbering memory means overwritng its contents. After clobbering, the memory allocated to 
+     the pointer is cleared and the variable can no longer be used. 

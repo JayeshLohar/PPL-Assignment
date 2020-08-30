@@ -1,0 +1,25 @@
+37 ccp "Constants propagated" "main" 2
+37 ccp "Statements deleted" "main" 2
+42 fre "SCC iterations == 3" "main" 2
+43 evrp "Incremental SSA update" "main" 1
+54 release_ssa "SSA names released" "main" 3
+54 release_ssa "SSA name holes removed" "main" 3
+98 ccp "Copies propagated" "main" 1
+98 ccp "Statements deleted" "main" 1
+107 fre "SCC iterations == 3" "main" 2
+110 vrp "Incremental SSA update" "main" 2
+110 vrp "Statements folded" "main" 1
+110 vrp "Jumps threaded" "main" 1
+110 vrp "Number of ASSERT_EXPR expressions inserted" "main" 1
+116 copyprop "Copies propagated" "main" 5
+116 copyprop "Constants propagated" "main" 1
+116 copyprop "Statements deleted" "main" 5
+139 pre "compute_antic iterations == 2" "main" 1
+139 pre "Insertions" "main" 1
+139 pre "SCC iterations == 3" "main" 2
+139 pre "insert iterations == 2" "main" 1
+147 loopinit "Incremental SSA update" "main" 1
+186 dom "Copies propagated" "main" 1
+189 vrp "Incremental SSA update" "main" 2
+189 vrp "Number of ASSERT_EXPR expressions inserted" "main" 1
+270 combine "two-insn combine" "main" 1
